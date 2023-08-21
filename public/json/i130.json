@@ -1,0 +1,536 @@
+{
+    "formType" : "1",
+    "Part2G28attached" : "1",
+    "Part1LineVolagNumber" : "123456",
+    "Part1USCISOnlineAcctNumber" : "762390128812",
+    "Part2AttorneyStateBarNumber" : "1234567890",
+    "arNumber" : "8000260025234",
+    "uscisOAN" : "762390128812",
+    "usssNumber" : "936258147",
+    "reqFor" : "Y",
+    "reqForSub" : "Y",
+    "adoptRelated" : "Y",
+    "adoptCiti" : "Y",
+    "lname" : "Hardik",
+    "fname"  : "hardik",
+    "mName" : "hardik",
+    "prevlname" : "hk",
+    "prevfname" : "h123",
+    "prevMName" : "pehadiya",
+    "bornAddress": {
+       "street": "Austin, TX, USA",
+       "state": "TX",
+       "city": "Travis County",
+       "country" : "USA",
+       "zipCode": "N/A",
+       "latLng": {
+           "lat": 30.267153,
+           "lng": -97.7430608
+       }
+   },
+    "dateOfBirth" : "01/01/2020",
+    "gender" : "Y",
+    "inCareOfName" : "Y",
+    "mailAddress": {
+       "name": "Mail Name",
+       "street": "TxTag Customer Service Center, Burnet Road, Austin, TX, USA",
+       "state": "TX",
+       "city": "Burnet Road",
+       "country" : "USA",
+       "zipCode": "78727",
+       "latLng": {
+           "lat": 30.425003,
+           "lng": -97.70170159999999
+       }
+   },
+    "Part2Line10Unit" : "FLR",
+    "Part2Line10AptSteFlrNumber" : "2299034",
+    "Part2Line10Province" : "238890",
+    "Part2Line10PostalCode" : "963258147",
+	"physAddress": {
+		"street": "Austin-Bergstrom International Airport (AUS), Presidential Boulevard, Austin, TX, USA",
+		"state": "TX",
+		"city": "3600",
+		"country" : "US",
+		"zipCode": "78719",
+		"latLng": {
+			"lat": 30.19747109999999,
+			"lng": -97.66635289999999
+		},
+		"dateFrom": "9/6/2016",
+		"dateTo" : "9/2/2016"
+	},
+     "Part2Line12Unit" : "APT",
+    "Part2Line12AptSteFlrNumber" : "123996",
+    "Part2Line12Province" :"testprovince",
+    "Part2Line12PostalCode" : "p123455",
+    "prevPhysAddr": {
+       "street": "Central Park, New York, NY, USA",
+       "state": "NY",
+       "city": "Manhattan",
+       "country" : "US",
+       "zipCode": "N/A",
+       "latLng": {
+           "lat": 40.7812199,
+           "lng": -73.9665138
+       },
+       "dateFrom": "6/8/2020",
+       "dateTo": "9/3/2020"
+   },
+    "Part2Line14Unit" : "STE",
+    "Part2Line14AptSteFlrNumber": "ste123456",
+    "Part2Line14Province" : "US",
+    "Part2Line14PostalCode" : "396223",
+    "Part2Line16NumberofMarriages" : "1",
+    "maritalInfo": {
+		"status": "Y",
+		"dateOfMarriage": "01/09/2020",
+		"marriagePlace": {
+			"street": "Switzerland Inn, High Ridge Road, Little Switzerland, NC, USA",
+			"state": "NC",
+			"city": "High Ridge Road",
+			"country" : "USA",
+			"zipCode": "28749",
+			"latLng": {
+				"lat": 35.8501526,
+				"lng": -82.09094329999999
+			}
+		}
+	},
+    "Part2Line19cProvince": "testprovince",
+    "spouseDetails": {
+		"dateOfMarriageEnd": "22/01/2018",
+		"firstName": "testing",
+		"lastName": "patel",
+		"middleName": "H"
+	},
+	"formerSpouseDetails": {
+		"formerFirstName": "Hardik",
+		"formerLastName": "pedhaliya",
+		"formerMiddleName": "testing",
+		"dateOfMarriageEnd2": "22/05/2020"
+    },
+    "mothersDetails" : {
+        "firstName": "Mother name",
+		"middleName": "Mother middle name",
+		"lastName": "Mother last name",
+		"dob": "9/5/1967",
+		"countryBorn": "US",
+		"residence": {
+			"street": "Austin Hospital, Studley Road, Heidelberg VIC, Australia",
+			"state": "VIC",
+            "city": "Studley Road",
+            "country" : "Australia",
+			"zipCode": "3084",
+			"latLng": {
+				"lat": -37.7565846,
+				"lng": 145.0592668
+			}
+		}
+	},
+    "Part2Line26Male" : "Y",
+    "Part2Line26Female" : "N",
+    "fathersDetails": {
+		"firstName": "Father name",
+		"middleName": "Father middle name",
+		"lastName": "father last name",
+		"dob": "9/12/1983",
+		"countryBorn": "AE",
+		"residence": {
+			"street": "Austin Hospital, Studley Road, Heidelberg VIC, Australia",
+			"state": "VIC",
+            "city": "Studley Road",
+            "country" : "Australia",
+			"zipCode": "3084",
+			"latLng": {
+				"lat": -37.7565846,
+				"lng": 145.0592668
+			}
+		}
+	},
+	"Part2Line32Male" : "Y",
+    "Part2Line32Female" : "N",
+    "residenceType": "Y",
+	"usCitizen": {
+		"type": "Y",
+		"haveCert": "Y",
+		"certNumber": "123123123",
+		"certIssuePlace": "Austin certificate issue date",
+		"certIssueDate": "13/07/2020"
+	},
+	"lawfulPR": {
+		"isPRThroughMarriage": "Y",
+		"classAdmission": "testclass",
+		"dateAdmission": "25/07/2018",
+		"stateAdmission": "US",
+		"cityAdmission": "USA"
+	},
+    "employed": true,
+	"employerDetails": {
+		"name": "Employer name",
+		"occupation": "IT",
+		"residence": {
+			"street": "Silicon Valley, CA, USA",
+			"state": "CA",
+			"city": "California",
+            "zipCode": "N/A",
+            "country":"USA",
+			"latLng": {
+				"lat": 37.387474,
+				"lng": -122.0575434
+			}
+		},
+        "startDate": "6/15/2020",
+        "endDate": "6/15/2020"
+	},
+    "Part2Line41Unit" : "FLR",
+    "Part2Line41AptSteFlrNumber" : "test12344",
+    "Part2Line41Province" : "testprovincepart2",
+    "Part2Line41PostalCode" : "testpostalcode",
+    "prevEmployerDetails": {
+		"name": "prev Employer",
+		"occupation": "Prev IT",
+		"residence": {
+			"street": "Amazon Development Centre Scotland, Waterloo Place, Edinburgh, United Kingdom",
+			"state": "Scotland",
+            "city": "Waterloo Place",
+            "country":"USA",
+			"zipCode": "EH1 3EG",
+			"latLng": {
+				"lat": 55.9530414,
+				"lng": -3.1884652
+			}
+		},
+		"startDate": "9/10/2007",
+		"endDate": "6/15/2020"
+	},
+    "Part2Line45Unit" : "APT",
+    "Part2Line45AptSteFlrNumber" : "87903458",
+    "Part2Line45Province" : "testprovince",
+    "Part2Line45PostalCode" : "testpostalcode",
+    "bioGraphicInfo": {
+		"hispanicOrLatino": "H",
+		"feet": "5",
+		"inch": "11",
+		"weight": "123",
+		"eyeColor": "GRAY",
+		"hairColor": "BRN",
+		"race": [
+			"W",
+			"A",
+			"B",
+			"AA",
+			"N"
+		]
+	},
+	
+    "Part3Line4bPounds2" : "3",
+    "Part3Line4cPounds3" : "5",
+	"beneficiaryInfo": {
+
+		"arNumber": "123456789",
+		"usssNumber": "123121234",
+		"uscisOAN": "8899063258",
+		"fname": "bene First name",
+		"mName": "bene middle name",
+		"lname": "bene family name",
+		"prevfname": "prev bene name",
+		"prevlname": "prev bene last",
+		"prevMName": "prev bene middle",
+		"country": "AG",
+		"city": "prev city born",
+		"dateOfBirth": "9/1/2020",
+		"gender": "Y",
+        "isPetitionFiled": "Y",
+    
+    "currentAddress": {
+        "street": "UC Davis Medical Center, Stockton Boulevard, Sacramento, CA, USA",
+        "state": "CA",
+        "city": "Stockton Boulevard",
+        "zipCode": "95817",
+        "latLng": {
+            "lat": 38.5549492,
+            "lng": -121.4546344
+        },
+        "country": "95817"
+    },
+    "contactInfo": {
+        "phnNumber": "(123)123-1234",
+        "cellNumber": "(1-233)123-1231",
+        "email": "asd@ada.co"
+    },
+    
+
+   "maritalInfo1": {
+    "status": "M",
+    "currentlyMarried": true,
+    "marriageCount": "3",    
+    "dateOfMarriageended" :"22/08/2020",
+
+    "marriagePlace": {
+        "street": "Washington Square Park, New York, NY, USA",
+        "state": "NY",
+        "city": "Manhattan",
+        "zipCode": "10012",
+        "latLng": {
+            "lat": 40.7308228,
+            "lng": -73.997332
+        },
+        "country": "10012"
+    },
+    
+    "formerSpouseDetails" : {
+        "fname": "test",
+        "lname": "lname",
+        "mName": "mname"
+    },
+    "dateOfMarriage": "8/10/2020",
+        "spouseDetails": {
+        "spouseFName": "spouse fname",
+        "relationship": "Spouse",
+        "spouseMName": "spouse middle",
+        "spouseLName": "spouse last",
+        "dateOfBirth": "5/4/2020",
+        "countryOfBirth": "BI"
+    },
+    "prevSpouseDetails": {
+        "prevSpouseFName": "prev spouse fname",
+        "prevSpouseMName": "prev spouse middle",
+        "prevSpouseLName": "prev spouse last",
+        "dateOfMarriageEnd": "10/08/2020"
+    },
+    
+    "dontHaveChild": false,
+    "numberOfChildren": "2",
+    "childrenInfo": [
+        {
+            "childFname": "child name",
+            "childMName": "child middle",
+            "childLname": "child last",
+            "dateOfBirth": "8/4/2020",
+            "countryOfBirth": "AL"
+        },
+        {
+            "childFname": "second child",
+            "childMName": "sec child middle",
+            "childLname": "sec child last",
+            "dateOfBirth": "8/10/2020",
+            "countryOfBirth": "BL"
+        }
+    ]
+},
+
+   "entryInfo": {
+    "isBeenToUSA": "Y",
+    "currentlyInUSA": true,
+    "admissionOfArrival": "Business",
+    "dateOfArrival": "8/3/2020",
+    "passportNumber": "123123123123",
+    "stayExpire": "8/3/2020",
+    "travelDocNumber": "cc3243112fe",
+    "expireDateOfDoc": "9/28/2020",
+    "adRecordNumber": "12312312312",
+    "docIssuanceCountry": "BD"
+},
+"employerInfo": {
+    "employerName": "bene employer",
+    "employmentStartDate": "8/2/2020",
+    "address": {
+        "street": "Amazon Development Centre India Pvt. Ltd. (HYD20), Kokapet, Hyderabad, Telangana, India",
+        "state": "Telangana",
+        "city": "Hyderabad",
+        "zipCode": "500075",
+        "latLng": {
+            "lat": 17.4043114,
+            "lng": 78.3303767
+        },
+        "country": "500075"
+    }
+},
+
+
+   "immigrationProceedingInfo": {
+    "everBeenInProceedings": "Y",
+    "typeOfProceeding": "Y",
+    "proceedingCity": "proceeding city ",
+    "proceedingState": "proceeding state",
+    "dateOfProceeding": "8/11/2020"
+},
+"lastLivedInfo": {
+    "street": "Washington Monument, 15th Street Northwest, Washington, DC, USA",
+    "state": "DC",
+    "city": "15th Street Northwest",
+    "zipCode": "20024",
+    "latLng": {
+        "lat": 38.8894838,
+        "lng": -77.0352791
+    },
+    "country": "20024",
+    "dateOfResidingFrom": "6/7/2020",
+    "dateOfResidingTo": "9/1/2020"
+}
+    },
+
+    "Part4Line26StreetNumberName" : "test",
+    "Part4Line26Unit" : "FLR",
+    "Part4Line26AptSteFlrNumber":"9635882",
+    "Part4Line26Province":"test",
+    "Part4Line26PostalCode":"369221",
+    "Part4Line11Unit" : "FLR",
+    "Part4Line11AptSteFlrNumber" :"Apte44446",
+    "Part4Line11Province" : "testprovince",
+    "Part4Line11PostalCode" : "testpostalcode",
+    "Part4Line12aStreetName" : "teststreetname",
+    "Part4Line12Unit" : "STE",
+    "Part4Line12bAptSteFlrNumber" : "testste",
+    "Part4Line12cCityTown" : "testcity123",
+    "Part4Line12dState" : "gujrat",
+    "Part4Line12eZipCode" : "testzipcode",
+    "Part4Line13StreetNumbername" : "1235555",
+    "Part4Line13Unita" : "FLR",
+    "Part4Line13AptSteFlrNumber": "1236999",
+    "Part4Line13CityTown" : "testcity",
+    "Part4Line13Province" : "testprovince",
+    "Part4Line13PostalCode" : "testpostalcode",
+   "Part4Line13Country" : "testcoutry",
+   "Part4Line20cProvince" : "testprovince",
+   "Part4Line34aFamilyName" : "test789",
+   "Part4Line34bGivenName" : "test0000",
+   "Part4Line34bMiddleName" : "pedhadiya",
+   "Part4Line35Relationship" : "father",
+   "Part4Line36DateOfBirth" : "12/8/1992",
+   "Part4Line36CountryOfBirth" : "testcountry",
+   "Part4Line38aFamilyName" : "test990",
+   "Part4Line38bGivenName" : "sbdhaj8787",
+   "Part4Line38cMiddleName" : "test666",
+   "Part4Line39Relationship" : "test",
+   "Part4Line40DateofBirth" : "12/7/2016",
+   "Part4Line41CountryOfBirth" : "india",
+   "Part4Line42aFamilyName":"hardik123",
+   "Part4Line42bGivenName":"hardik",
+   "Part4Line42cMiddleName":"hardik",
+   "Part4Line43Relationship" : "test",
+   "Part4Line44DateofBirth":"12/07/2018",
+   "Part4Line45CountryofBirth":"12/07/2018",
+   "Part4Line46aFamilyName":"test",
+   "Part4Line46bGivenName":"test",
+   "Part4Line46MiddleName":"test",
+   "Part4Line47Relationship":"test",
+   "Part4Line48DateofBirth":"12/08/2018",
+   "Part4Line49Country":"test",
+
+
+"applyingForStatusChangeInfo": {
+    "city": "statement city",
+    "state": "statement state"
+},
+   "Part4Line56aFamilyName":"test",
+   "Part4Line56bGivenName":"test",
+   "Part4Line56cMiddleName":"test",
+   "Part4Line56StreetNumbername":"test",
+   "Part4Line56Unit":"test",
+   "Part4Line56AptSteFlrNumber":"test",
+   "Part4Line56CityOrTown":"test",
+   "Part4Line56Province":"test",
+   "Part4Line56Country":"test",
+   "Part4Line56PostalCode":"963255",
+   "Part4Line57Unit":"FLR",
+   "Part4Line57AptSteFlrNumber":"test",
+   "Part4Line57Province":"test",
+   "Part4Line57PostalCode":"963258",
+   "Part4Line61aCityTown":"test",
+   "Part4Line61bProvince":"test",
+   "Part4Line61cCountry":"test",
+
+   "isFiledPetitionPreviously": "Y",
+   "prevFiledPetitionInfo": {
+       "personFName": "person fname",
+       "personMName": "person middle name",
+       "personLName": "person last name",
+       "city": "person city",
+       "state": "person state",
+       "dateOfPrevPetition": "8/18/2020",
+       "petitionResult": "approved",
+       "resultDesc": "Approved petition"
+   },
+   
+   "petitionForOtherRelativeInfo": {
+       "relativeFName": "other relative fname",
+       "relativeMName": "other relative middle",
+       "relativeLName": "other relative last",
+       "relationship": "spouse"
+   },
+
+   "petitionForAdditionalRelativeInfo": {
+       "otherRelativeFName": "additional relative f",
+       "otherRelativeMName": "additional relative m",
+       "otherRelativeLName": "additional relative l",
+       "otherRelationship": "parent"
+   },
+   "Part5Line3DayTimePhoneNumber":"9632581470",
+   "Part5Line4MobileNumber":"3692581470",
+   "Part5Line5Email":"test@gmail.com",
+   "Part6Line1Checkbox" : "A",
+   "Part6Line1Language":"test",
+   "Part6Line2":"C",
+   "Part6LineRepresentativeName":"test",
+   "Part6PetitionerSignature":"test",
+   "Part6bDateofSignature":"test",
+   "Part7Line1aInterpreterFamilyName":"test",
+   "Part7Line1bInterpreterGivenName":"test",
+   "Part7Line1bInterpreterBusinessorOrg":"test",
+   "Part7Line3StreetNumberName":"test",
+   "Part7Line3Unit":"FLR",
+   "Part7Line3AptSteFlrNumber":"963258147",
+   "Part7Line3ZipCode":"963221",
+   "PartLine3Province":"test",
+   "Part7Line3PostalCode" : "93258147",
+   "Partine7Line3Country" : "india",
+   "Part7Line53DayTimePhone" : "9632581470",
+   "Part7Line5Email":"test@gmail.com",
+   "Part7LineNameofLanguage":"test",
+   "Part7Line7aSignature":"test",
+   "Part7Line7SignatureDate":"12/08/2020",
+   "Part8Line1aPreparerFamilyName":"test",
+   "Part8Line1bPreparerGivenName" :"test",
+   "Part8Line2Bussinessname" : "test",
+   "Part8Line3StreetNumberName":"123556",
+   "Part8Line3Unit" : "STE",
+   "Part8Line3AptSteFlrNumber":"1235669",
+   "Part8Line3State":"test",
+   "Part8Line3Zipcode":"test",
+   "Part8Line3Province":"test",
+   "Part8Line3PostalCode":"123663",
+   "Part8Line3Country":"test",
+   "Part8Line4InterpreterDayTime":"12",
+   "Part8Line4DayTimePhoneNumber":"963258147",
+   "Part8Line5PreparerFaxNumber":"12369655",
+   "Part8Line6Email":"test@gmail.com",
+   "Part8Line7":"test",
+   "Part8Line7b" :"Y",
+   "Part8Line8aSignature":"test",
+   "Part8Line8aDateofSignature":"12/09/2020",
+   "Part9Line4aFamilyName":"test",
+   "Part9Line4aGivenName":"test",
+   "Part9Line4cLastName":"test",
+   "Part9Line1AlienNumber":"123550",
+   "Part9Line3aPageNumber":"555000",
+   "Part9Line3bPartNumber":"55500",
+   "Part9Line4aPageNumber":"2586336",
+   "Part9Line4bPartNumber":"55500",
+   "Part9Line3cItemNumber":"1111156",
+   "Part9Line4cItemNumber":"6633256",
+   "Part94dAdditionalInformation":"test",
+   "Part9Line5aPageNumber":"12335566",
+   "Part9Line5bPartNumber":"88880",
+   "Part9Line5cItemNumber":"55555",
+   "Part9Line5dAddtionalInfo":"44444",
+   "Part9Line6aPageNumber":"555555",
+   "Part9Line6aPartNumber":"663355",
+   "Part9Line6aItemNumber":"5550",
+   "Part9Line6dAdditionalInfo":"333320",
+   "Part9Line7bPartNumber":"550000",
+   "Part9Line7cItemNumber":"544478",
+   "Part9Line7dAdditionalInfo":"2033366",
+   "Part9Line9aPageNumber":"78633321"
+   }

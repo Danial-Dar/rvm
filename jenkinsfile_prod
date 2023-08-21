@@ -1,0 +1,129 @@
+pipeline {
+   agent { label 'rvm-prod' }
+    stages {
+        stage('pre_req') {
+            steps {
+              //  sh 'pwd && ls -lah'
+               sh ''' cat <<EOF > startup.sh
+                    #!/bin/bash
+                     php artisan migrate --force;
+                     /etc/init.d/nginx start;
+					 service cron start;
+                     exec php-fpm;
+
+                 '''
+                sh ' rm -f .env && cp /var/lib/env_files/rvm_portal_prod.env .env'
+                sh ''' echo  '
+                    server {
+                    listen 443;
+                    index index.php index.html;
+                    ssl on;
+                    server_name rvm.vultik.com;
+                    ssl_certificate /https/wildcard.vultik.com.crt;
+                    ssl_certificate_key /https/wildcard.vultik.com.key;
+                    ssl_protocols TLSv1.1 TLSv1.2;
+                    access_log /var/log/nginx/access.log;
+                    error_log /var/log/nginx/error.log;
+                    root /var/www/html/public;
+                    client_max_body_size 100M;
+                   location ~ \\.php$ {
+                    try_files $uri =404;
+                    fastcgi_split_path_info ^(.+\\.php)(/.+)$;
+                    fastcgi_pass 127.0.0.1:9000;
+                    fastcgi_index index.php;
+                    include fastcgi_params;
+                    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                    fastcgi_param PATH_INFO $fastcgi_path_info;
+                   }
+
+                  location / {
+                    try_files $uri $uri/ /index.php?$query_string;
+                    gzip_static on;
+                    }
+                  }' > default.conf
+                  '''
+                sh ''' cat <<EOF > rvm_portal_dockerfile
+                     FROM php:8.1-fpm-buster
+                     RUN apt update && apt install -y nginx libzip-dev libpng-dev libpq-dev cron ffmpeg acl && docker-php-ext-install zip gd pdo pdo_pgsql
+                     RUN curl -sS https://getcomposer.org/installer | php
+                     RUN mv composer.phar /usr/local/bin/composer && chmod a+x /usr/local/bin/composer
+					#RUN apt-get update && apt-get install -y libpq-dev && apt-get install -y libpng-dev  && docker-php-ext-install pdo pdo_pgsql gd
+					 COPY default.conf /etc/nginx/sites-enabled/default
+					 COPY ./ /var/www/html/
+					 RUN rm /var/www/html/default.conf /var/www/html/startup.sh
+                     RUN mkdir -p /var/www/html/FFmpeg/bin/  /var/www/html/storage/app/recordings /var/www/html/storage/app/alpha_csv /var/www/html/storage/app/caller_csv
+                     RUN cp /usr/bin/ffmpeg /var/www/html/FFmpeg/bin/
+                     RUN cp /usr/bin/ffprobe /var/www/html/FFmpeg/bin/
+                     RUN ln -s /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+                     RUN sed -i -e 's/upload_max_filesize = 2M/upload_max_filesize = 100M/' /usr/local/etc/php/php.ini
+                     RUN sed -i -e 's/post_max_size = 8M/post_max_size = 200M/' /usr/local/etc/php/php.ini
+                     RUN sed -i -e 's/memory_limit = 128M/memory_limit = 4096M/' /usr/local/etc/php/php.ini
+                     RUN sed -i -e 's/max_execution_time = 30/max_execution_time = 360/' /usr/local/etc/php/php.ini
+                     RUN sed -i -e 's/max_input_time = 60/max_input_time = 360/' /usr/local/etc/php/php.ini
+
+					 RUN sed -i -e 's/pm.max_children = 5/pm.max_children = 200/' /usr/local/etc/php-fpm.d/www.conf
+					 RUN sed -i -e 's/pm.start_servers = 2/pm.start_servers = 64/' /usr/local/etc/php-fpm.d/www.conf
+					 RUN sed -i -e 's/pm.min_spare_servers = 1/pm.min_spare_servers = 32/' /usr/local/etc/php-fpm.d/www.conf
+					 RUN sed -i -e 's/pm.max_spare_servers = 3/pm.max_spare_servers = 64/' /usr/local/etc/php-fpm.d/www.conf
+
+					 #RUN composer update
+					 RUN composer install
+					 RUN php artisan passport:install
+					 RUN php artisan config:cache
+					 RUN php artisan config:clear
+                     RUN php artisan optimize
+					 # RUN php artisan key:generate
+                     RUN mkdir -p /var/www/html/storage/app/contact-lists
+                     RUN setfacl -dR -dm u:www-data:rwx /var/www/html/storage/logs
+                     #RUN touch /var/www/html/storage/logs/laravel.log
+					 RUN chown -R www-data:www-data /var/www/html/
+					 #ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+					 RUN touch /var/log/cron-rvm.log
+					 RUN (crontab -l ; echo "*/1 * * * * cd /var/www/html/ && /usr/local/bin/php artisan schedule:run  >> /var/log/cron-rvm.log 2>&1") | crontab
+					 RUN (crontab -l ; echo "0 0 * * 1 cd /var/www/html/ && /usr/local/bin/php artisan add:sw_numbers 2>&1") | crontab
+                     RUN (crontab -l ; echo "*/5 * * * * chown -R www-data /var/www/html/storage/logs 2>&1") | crontab
+					 COPY startup.sh /opt/startup.sh
+					 RUN chmod a+x /opt/startup.sh
+					 CMD ["/opt/startup.sh"]
+
+                '''
+                 sh ''' echo "rvm_portal_dockerfile\nJenkinsfile" > .dockerignore
+                    '''
+
+              //  sh 'pwd && ls -lah'
+            }
+        }
+        stage('Building our image') {
+            steps {
+                  sh "sudo sync && sudo bash -c '/bin/echo 3 > /proc/sys/vm/drop_caches'"
+                  sh " docker build -t rvm_portal:0.0.$BUILD_NUMBER -f rvm_portal_dockerfile ."
+                  sh "sudo sync && sudo bash -c '/bin/echo 3 > /proc/sys/vm/drop_caches'"
+            }
+        }
+   stage('Remove Previous Image') {
+            steps {
+                  sh "docker stop rvm_portal || true && docker rm rvm_portal || true "
+            }
+        }
+   stage('Run New image') {
+            steps {
+                  sh "docker run  --restart=on-failure:10 -p 8085:443 -v /root/ssl_certs:/https:ro  -v /var/log/rvm_portal:/var/www/html/storage/logs --name rvm_portal -d rvm_portal:0.0.$BUILD_NUMBER"
+            }
+        }
+    }
+      post {
+            failure {
+                                                mail to: 'nusratulhassan@gmail.com,nusrat@vultik.net', from: 'devops@vultik.net',
+                                                subject: "RVM Portal pipeline Failure Notification: ${env.BUILD_TAG}",
+
+                                                body: "Dear Concerned\n${env.JOB_NAME} has been failed. \n\nView complete logs:\n ${env.BUILD_URL}console\n\n BR\nTeam Devops"
+            }
+            success {
+                                                mail to: 'nusratulhassan@gmail.com,nusrat@vultik.net', from: 'devops@vultik.net',
+                                                mimeType: 'text/html',
+                                                subject: "RVM Portal pipeline Notification: ${env.BUILD_TAG}",
+                                                body: "Dear Concerned<br>${env.JOB_NAME} has been completed Successfully.<br> <a href='${env.BUILD_URL}console' > <button type='button' class='btn btn-info'>View complete logs</button> </a>  <br>BR<br>Team Devops "
+            }
+
+        }
+}

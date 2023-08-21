@@ -1,0 +1,11 @@
+<plugin name="cordova-plugin-whitelist" spec="1" />
+  <access origin="*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <allow-intent href="tel:*" />
+  <allow-intent href="sms:*" />
+  <allow-intent href="mailto:*" />
+  <allow-intent href="geo:*" />
+  <!-- White list https access to Stripe-->
+<allow-navigation href="https://*stripe.com/*"/>
+<allow-navigation href="https://*js.stripe.com/*"/>

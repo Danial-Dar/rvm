@@ -1,0 +1,667 @@
+openapi: 3.0.0
+info:
+  title: Vos Logic API
+  description:
+  # version: 0.1.9
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+servers:
+  # - url: http://127.0.0.1:8000/api
+  #   description: Optional server description, e.g. Main (production) server
+  - url: https://portal.voslogic.com/api
+    # description: Optional server description, e.g. Internal staging server for testing
+paths:
+  /login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: user@email.com
+                password:
+                  type: string
+                  example: example
+            examples: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  example-1:
+
+                      user: 40165
+                      access_token: nl7f949dfgt2tfj4ganc0r3za2saktsr
+
+
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                      access_token:
+                        type: string
+
+              examples:
+                Normal User Response:
+                  value:
+                    user: {
+                            "id": 2,
+                            "first_name": "Test",
+                            "last_name": "User",
+                            "email": "user@gmail.com",
+                            "email_verified_at": null,
+                            "role": "user",
+                            "status": "1",
+                            "created_at": "2021-09-22T17:17:47.000000Z",
+                            "updated_at": "2021-10-26T12:31:22.000000Z",
+                            "user_image": "1634907095.png",
+                            "user_image_path": null,
+                            "company_id": 7,
+                            "low_balance_check": false,
+                            "balance": "80.00",
+                            "formated_number": "80.00",
+                            "credit": false
+                        }
+                    access_token: nl7f949dfgt2tfj4ganc0r3za2saktsr
+
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+      description: Login api for accessing secure api
+  /campaigns:
+    get:
+      tags:
+        - Campaign
+      summary: Returns a list of user campaigns.
+      description: This api only fetch campaings for logged in user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':    # status code
+          description: A JSON array of user campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /campaigns/store:
+    post:
+      tags:
+        - Campaign
+      summary: Create Campaign.
+      description: This api is to create campaign
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                color:
+                    type: array
+                    items:
+                      type: string
+                campaign_type:
+                  type: string
+                  placeholder: 'Select...'
+                name:
+                  type: string
+                caller_id:
+                  type: string
+                vm_forward_number:
+                  type: string
+                recording_id:
+                  type: integer
+                opt_in_number:
+                  type: string
+                transfer_to_number:
+                  type: string
+                opt_out_number:
+                  type: string
+                recording_optin_id:
+                  type: integer
+                optout_recording_id:
+                  type: integer
+                voice_mail_enabled:
+                  type: boolean
+                voice_mail_recording_id:
+                  type: integer
+
+            examples: {}
+      responses:
+        '200':    # status code
+          # description: A JSON array of user campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /campaigns/{id}:
+    get:
+      tags:
+        - Campaign
+      summary: Returns a campaign.
+      description: This api fetch campaing record of provided id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          example: 2
+      responses:
+        '200':    # status code
+          description: Campaign Record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /campaigns/change-action/{id}:
+    post:
+      tags:
+        - Campaign
+      summary: Play/Pause/Reset Campaign.
+      description: This api is to change the action of a specific campaign
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          example: 2
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: paused
+
+            examples: {}
+      responses:
+        '200':    # status code
+          # description: A JSON array of user campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /campaigns/delete/{id}:
+    delete:
+      tags:
+        - Campaign
+      summary: Delete a campaign.
+      description: This api delete campaing record of provided id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: int
+          example: 2
+      responses:
+        '200':    # status code
+          description: Delete Campaign Record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /contact-lists:
+    get:
+      tags:
+        - Contact List
+      summary: Returns a list of user contact lists.
+      description: This api only fetch contact lists for logged in user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':    # status code
+          description: A JSON array of user contact lists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /contact-lists/store:
+    post:
+      tags:
+        - Contact List
+      summary: Create Contact List.
+      description: This api is to create new contact lists
+      security:
+        - bearerAuth: []
+      # parameters:
+      #  - name: file
+      #     in: formData
+      #     schema:
+      #       type: file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                file:
+                  type: file
+
+            examples: {}
+      responses:
+        '200':    # status code
+          # description: A JSON array of user campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /contact-lists/{id}:
+    get:
+      tags:
+        - Contact List
+      summary: Returns a contact list.
+      description: This api fetch contact list record of provided id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          example: 2
+      responses:
+        '200':    # status code
+          description: Contact List Record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /contact-lists/delete/{id}:
+    delete:
+      tags:
+        - Contact List
+      summary: Delete a contact list.
+      description: This api delete contact list record of provided id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: int
+          example: 2
+      responses:
+        '200':    # status code
+          description: Delete Contact List Record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /dncs:
+    get:
+      tags:
+        - Dnc
+      summary: Returns a list of user dnc numbers.
+      description: This api only fetch dnc numbers for logged in user
+      security:
+        - bearerAuth: []
+      responses:
+        '200':    # status code
+          description: A JSON array of user contact lists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /dncs/store:
+    post:
+      tags:
+        - Dnc
+      summary: Store Single Dnc Number.
+      description: This api is to create single dnc number
+      security:
+        - bearerAuth: []
+      # parameters:
+      #  - name: file
+      #     in: formData
+      #     schema:
+      #       type: file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                number:
+                  type: string
+            examples: {}
+      responses:
+        '200':    # status code
+          # description: A JSON array of user campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /dncs/upload:
+    post:
+      tags:
+        - Dnc
+      summary: Upload Dnc Number List.
+      description: This api is to upload dnc number lists.
+      security:
+        - bearerAuth: []
+      # parameters:
+      #  - name: file
+      #     in: formData
+      #     schema:
+      #       type: file
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: file
+            examples: {}
+      responses:
+        '200':    # status code
+          # description: A JSON array of user campaigns
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /dncs/{id}:
+    get:
+      tags:
+        - Dnc
+      summary: Returns a Dnc record.
+      description: This api fetch dnc record record of provided id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          example: 2
+      responses:
+        '200':    # status code
+          description: Dnc Number Record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'
+  /dncs/delete/{id}:
+    delete:
+      tags:
+        - Dnc
+      summary: Delete a dnc record.
+      description: This api delete dnc number record of provided id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: int
+          example: 2
+      responses:
+        '200':    # status code
+          description: Delete Contact List Record
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+
+                  error:
+                    type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    error: 'Error #0: Input error. Resource not found'

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+#vs1__listbox {
+    position: absolute;
+    width: 100%;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+.pac-item, .pac-item-query {
+	background: rgb(180, 180, 180) !important;
+	color: #fff !important;
+	padding: 7px !important;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .h-48{
+        height: 8rem;
+    }
+  }

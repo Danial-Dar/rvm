@@ -1,0 +1,32 @@
+name: Symptom Checker CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [13.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build:api
+    - run: npm install
+    - run: npm run build
+    - run: npm test
+    - name: copy to ec2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.EC2_KEY }}
+        port: ${{ secrets.PORT }}
+        source: "dist/css,dist/fonts,dist/img,dist/index.html,dist/js,dist/favicon.ico"
+        target: "/var/www/html/vue"

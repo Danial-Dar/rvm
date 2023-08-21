@@ -1,0 +1,466 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.4|^8.0",
+        "arku/nova-multiselect": "dev-master",
+        "armincms/json": "^0.5.2",
+        "aws/aws-sdk-php": " ^3.153",
+        "codenco-dev/nova-grid-system": "^2.0",
+        "dashboard/activecampaign": "*",
+        "dashboard/pausedcampaign": "*",
+        "doctrine/dbal": "*",
+        "eminiarts/nova-tabs": "^2.0",
+        "fruitcake/laravel-cors": "^2.0",
+        "giggsey/libphonenumber-for-php": "^8.12",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "heatchart/average-callback-duration": "*",
+        "heatmap/average-callback": "*",
+        "heatmap/chart-one": "*",
+        "heatmap/get-callback": "*",
+        "laravel/framework": "^8.54",
+        "laravel/horizon": "^5.15",
+        "laravel/nova": "~4.0",
+        "laravel/passport": "^10.2",
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.3",
+        "league/flysystem-aws-s3-v3": "1.0",
+        "logtail/monolog-logtail": "^0.1.3",
+        "maatwebsite/excel": "^3.1",
+        "outl1ne/nova-settings": "^5.0",
+        "pbmedia/laravel-ffmpeg": "^7.5",
+        "php-ffmpeg/php-ffmpeg": "^0.18.0",
+        "piechart/average-calls-per-campaign": "*",
+        "piechart/calls-per-campaign": "*",
+        "predis/predis": "^2.0",
+        "rvm/add-phrase": "*",
+        "rvm/agent-dashboard": "*",
+        "rvm/agentranking": "*",
+        "rvm/amcharts": "*",
+        "rvm/audio-fields": "*",
+        "rvm/billing": "*",
+        "rvm/bot": "*",
+        "rvm/call-sent-heatmap": "*",
+        "rvm/calldetails": "*",
+        "rvm/campaign-audio": "*",
+        "rvm/campaign-hours": "*",
+        "rvm/campaign_ratio": "*",
+        "rvm/campaignperformance": "*",
+        "rvm/campaignsendrates": "*",
+        "rvm/campaignstats": "*",
+        "rvm/coachingqueue": "*",
+        "rvm/companycampaigns": "*",
+        "rvm/contact-list-stat": "*",
+        "rvm/contact-list-upload": "*",
+        "rvm/dashboardcallbackheatmap": "*",
+        "rvm/dashboardcalloutheatmap": "*",
+        "rvm/department": "*",
+        "rvm/dncheatmap": "*",
+        "rvm/downloadaudio": "*",
+        "rvm/edit-mynumber": "*",
+        "rvm/file-drag-drop": "*",
+        "rvm/flaggedcalls": "*",
+        "rvm/groupperformance": "*",
+        "rvm/inboundcallovertime": "*",
+        "rvm/ivrdncheatmap": "*",
+        "rvm/ivroutboundstats": "*",
+        "rvm/listspecificstats": "*",
+        "rvm/monitor-number-to-time-cir": "*",
+        "rvm/nova-dependency-container": "*",
+        "rvm/nova-phone-number": "*",
+        "rvm/number-config": "*",
+        "rvm/number-of-states-heatmap-cir": "*",
+        "rvm/number-to-company-cir": "*",
+        "rvm/outboundoptinheatmap": "*",
+        "rvm/playaudio": "*",
+        "rvm/processingcalls": "*",
+        "rvm/progress-bar": "*",
+        "rvm/range-input": "*",
+        "rvm/recordings-with-play": "*",
+        "rvm/recordingspecificstats": "*",
+        "rvm/reports": "*",
+        "rvm/reputation-check-progress-bar": "*",
+        "rvm/scorecard": "*",
+        "rvm/scoreperformance": "*",
+        "rvm/scripts": "*",
+        "rvm/search-calls": "*",
+        "rvm/send-speed": "*",
+        "rvm/setting": "*",
+        "rvm/sms-campaign-builder": "*",
+        "rvm/statespecificstats": "*",
+        "rvm/test-now": "*",
+        "rvm/topmissedpoints": "*",
+        "rvm/upload-audio": "*",
+        "rvm/user-setting": "*",
+        "rvm/view-sms-stat": "*",
+        "rvm/view-stat": "*",
+        "signalwire/signalwire": "^2.3",
+        "sms/sms-compaign-builder": "*",
+        "spatie/laravel-permission": "^5.5",
+        "symfony/translation": "^5.3",
+        "treinetic/imageartist": "^1.0",
+        "yieldstudio/nova-phone-field": "^1.0.1",
+        "rvm/call-flow-step": "*",
+        "rvm/new-call-flow-step": "*"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "kitloong/laravel-migrations-generator": "^6.10",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Activecampaign"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Pausedcampaign"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/RangeInput"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AverageCallback"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ChartOne"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Downloadaudio"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/GetCallback"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CallsPerCampaign"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AverageCallsPerCampaign"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NumberConfig"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Playaudio"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SmsCompaignBuilder"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AverageCallbackDuration"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CampaignHours"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CampaignAudio"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/UploadAudio"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ProgressBar"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ContactListUpload"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SendSpeed"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ProgressBar"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/FileDragDrop"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AudioFields"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/TestNow"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Setting"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Billing"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/RecordingsWithPlay"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/nova-dependency-container"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CallSentHeatmap"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Campaignstats"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Listspecificstats"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Recordingspecificstats"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Ivroutboundstats"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Statespecificstats"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/UserSetting"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Campaignsendrates"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Ivrdncheatmap"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Dncheatmap"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CampaignRatio"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Inboundcallovertime"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Outboundoptinheatmap"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NumberOfStatesHeatmapCir"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/MonitorNumberToTimeCir"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NumberToCompanyCir"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ReputationCheckProgressBar"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AddPhrase"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SearchCalls"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Scoreperformance"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Calldetails"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Agentranking"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Topmissedpoints"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Coachingqueue"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Campaignperformance"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Groupperformance"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Processingcalls"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Flaggedcalls"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Amcharts"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Reports"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AgentDashboard"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Scorecard"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ViewStat"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Department"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/EditMynumber"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NovaPhoneNumber"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Scripts"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Companycampaigns"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/DashboardCallBackHeatMap"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Dashboardcalloutheatmap"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ViewSmsStat"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SmsCampaignBuilder"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Bot"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ContactListStat"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/BotTrain"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CallFlowStep"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/NewCallFlowStep"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

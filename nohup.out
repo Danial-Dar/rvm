@@ -1,0 +1,7 @@
+PHP Warning:  Version warning: Imagick was compiled against ImageMagick version 1799 but version 1808 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+
+Warning: Version warning: Imagick was compiled against ImageMagick version 1799 but version 1808 is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
+[2021-10-05 11:02:56][3] Processing: App\Jobs\StartCampaign
+[2021-10-05 11:02:56][3] Failed:     App\Jobs\StartCampaign
+[2021-10-05 11:02:56][4] Processing: App\Jobs\StartCampaign
+[2021-10-06 07:43:33][4] Processed:  App\Jobs\StartCampaign
